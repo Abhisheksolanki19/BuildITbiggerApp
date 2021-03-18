@@ -10,76 +10,76 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.ajdi.yassin.androiddisplayjokelib.JokeDetailsActivity;
+import com.udacity.abhishek.androiddisplayjokelib.JokeDisplayActivity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
 
-public class MainActivity extends AppCompatActivity implements JokeListener {
+public class MainActivity extends AppCompatActivity implements ListenerClass {
 
     private String joke;
-    private InterstitialAd mInterstitialAd;
+    private InterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupInterstitialAd();
+        setupOfInterstitialAd();
     }
 
-    private void setupInterstitialAd() {
+    private void setupOfInterstitialAd() {
         // Initialize the Mobile Ads SDK.
-        MobileAds.initialize(this, getString(R.string.admob_app_id));
+        MobileAds.initialize(this, getString(R.string.adMobAppId));
 
         // Create Interstitial Ad and set the adUnitId.
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-        requestNewInterstitialAd();
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitialAdUnitId));
+        reqOfNewInterstitialAd();
 
         // Show Interstitial Ad when user click button
         Button button = findViewById(R.id.button_tell_joke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new EndpointsAsyncTask(MainActivity.this).execute();
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+                new AsyncTaskClass(MainActivity.this).execute();
+                if (interstitialAd.isLoaded()) {
+                    interstitialAd.show();
                 } else {
-                    Log.d("MainActivity", "The interstitial wasn't loaded yet.");
+                    Log.d("MainActivity", "The interstitial Ad wasn't loaded yet.");
                     if (!TextUtils.isEmpty(joke)) {
-                        launchJokeActivity();
+                        launchOfJokeAct();
                     }
                 }
             }
         });
 
         // launch joke activity when interstitial ad closed
-        mInterstitialAd.setAdListener(new AdListener() {
+        interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
-                requestNewInterstitialAd();
+                reqOfNewInterstitialAd();
                 if (!TextUtils.isEmpty(joke)) {
-                    launchJokeActivity();
+                    launchOfJokeAct();
                 }
             }
         });
     }
 
-    private void launchJokeActivity() {
-        Intent intent = new Intent(this, JokeDetailsActivity.class);
-        intent.putExtra(JokeDetailsActivity.EXTRA_JOKE, joke);
+    private void launchOfJokeAct() {
+        Intent intent = new Intent(this, JokeDisplayActivity.class);
+        intent.putExtra(JokeDisplayActivity.EXTRA_JOKE_CODE, joke);
         startActivity(intent);
     }
 
-    private void requestNewInterstitialAd() {
-        if (!mInterstitialAd.isLoading() && !mInterstitialAd.isLoaded()) {
+    private void reqOfNewInterstitialAd() {
+        if (!interstitialAd.isLoading() && !interstitialAd.isLoaded()) {
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .build();
 
-            mInterstitialAd.loadAd(adRequest);
+            interstitialAd.loadAd(adRequest);
         }
     }
 
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements JokeListener {
     }
 
     @Override
-    public void onJokeLoaded(String joke) {
+    public void jokeLoaded(String joke) {
         Log.d("onJokeLoaded", "Joke is: " + joke);
         this.joke = joke;
     }

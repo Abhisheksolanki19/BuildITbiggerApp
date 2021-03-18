@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BuildItBigger.iml" filepath="$PROJECT_DIR$/BuildItBigger.iml" />
-      <module fileurl="file://$PROJECT_DIR$/androidDisplayJokeLib/androidDisplayJokeLib.iml" filepath="$PROJECT_DIR$/androidDisplayJokeLib/androidDisplayJokeLib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javaJokerLib/javaJokerLib.iml" filepath="$PROJECT_DIR$/javaJokerLib/javaJokerLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BuildItBigger.iml" filepath="$PROJECT_DIR$/.idea/modules/BuildItBigger.iml" group="BuildItBigger" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DisplayJokeLibrary/DisplayJokeLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/DisplayJokeLibrary/DisplayJokeLibrary.iml" group="BuildItBigger/DisplayJokeLibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="BuildItBigger/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/backend.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/backend.iml" group="BuildItBigger/backend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jokeLibrary/jokeLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/jokeLibrary/jokeLibrary.iml" group="BuildItBigger/jokeLibrary" />
     </modules>
   </component>
 </project>

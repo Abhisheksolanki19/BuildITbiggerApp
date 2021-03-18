@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.ajdi.yassin.androiddisplayjokelib.JokeDetailsActivity;
+import com.udacity.abhishek.androiddisplayjokelib.JokeDetailsActivity;
 
 
 public class MainActivity extends AppCompatActivity implements JokeListener {
